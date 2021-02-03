@@ -3,7 +3,6 @@ using LeaveManagement.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace LeaveManagement.Repository
@@ -28,6 +27,11 @@ namespace LeaveManagement.Repository
         {
             db.LeaveTypes.Remove(entity);
             return Save();
+        }
+
+        public bool Exists(int id)
+        {
+            return db.LeaveTypes.Any(x => x.Id == id);
         }
 
         public ICollection<LeaveType> FindAll()
